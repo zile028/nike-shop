@@ -1,0 +1,14 @@
+@import "../../assets/styles/main.scss";
+.showroom {
+  display: flex;
+  gap: 30px;
+  aside {
+    width: 300px;
+  }
+  article {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}

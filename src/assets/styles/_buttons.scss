@@ -1,0 +1,22 @@
+.btn {
+  border: none;
+  outline: none;
+  display: inline-block;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  color: $white;
+  padding: 1.5rem 2rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  &-sm {
+    padding: 1rem 1.5rem;
+  }
+
+  &-primary {
+    background-color: $black;
+  }
+
+  &-danger {
+    background-color: $active;
+  }
+}

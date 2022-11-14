@@ -4,11 +4,30 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+p {
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
 a {
   text-decoration: none;
   color: inherit;
 }
 
+button,
+input {
+  font-family: inherit;
+}
+
 ul {
   list-style: none;
+}
+
+img {
+  width: 100%;
 }
