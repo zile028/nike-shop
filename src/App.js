@@ -10,9 +10,8 @@ import ShowRoom from "./pages/ShowRoom/ShowRoom";
 
 function App() {
     const [reciveData, setReciveData] = useState(false);
-
     const dispatch = useDispatch()
-
+    
     useEffect(() => {
         Products.getAll().then(res => {
             dispatch(storeData(res.data))
