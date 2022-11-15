@@ -1,0 +1,20 @@
+@import "../../assets/styles/main.scss";
+.cart-wrapper {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 2;
+  display: inline-block;
+  width: auto;
+  padding: 10px;
+  background-color: $white;
+  box-shadow: 0 0 3px $black;
+  border-radius: 5px;
+  margin-top: 10px;
+  ul {
+    li {
+      font-size: 1.6rem;
+      line-height: 1.7;
+    }
+  }
+}

@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const url = "https://raw.githubusercontent.com/Alkibijad/webShop_fake_db/main/nike.json"
+const url =
+  "https://raw.githubusercontent.com/Alkibijad/react-nike/main/db.json";
 
 class Products {
-    static getAll = () => axios.get(url)
+  static getAll = () => axios.get(url);
 }
 
 export default Products;
