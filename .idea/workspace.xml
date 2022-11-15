@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12e9be17-968e-4281-b976-fffaf9447055" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/nike-shop.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/component/Cart/Cart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/component/Cart/cart.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/sliceCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Navigation/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Navigation/Navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Navigation/navigation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Navigation/navigation.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/ProductCard/ProductCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/ProductCard/ProductCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ShowRoom/ShowRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ShowRoom/ShowRoom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/Products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -38,6 +37,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectId" id="2HPpKHRBuhsO1Gk8TUdMVVIzcpy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -78,6 +80,7 @@
       <workItem from="1668369700937" duration="540000" />
       <workItem from="1668370265205" duration="2994000" />
       <workItem from="1668460744671" duration="4946000" />
+      <workItem from="1668546604332" duration="4850000" />
     </task>
     <servers />
   </component>

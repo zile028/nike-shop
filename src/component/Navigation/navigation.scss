@@ -7,6 +7,7 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
+    position: relative;
   }
 
   &-logo {
@@ -48,6 +49,23 @@
       border-radius: 5px;
       font-size: 20px;
       cursor: pointer;
+    }
+
+    .cartIcon {
+      position: relative;
+
+      span {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        font-size: 1.6rem;
+        background-color: $active;
+        padding: 0 5px;
+        height: 1.2em;
+        border-radius: 1.2em;
+        line-height: 1.2em;
+      }
     }
   }
 }

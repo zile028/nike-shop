@@ -11,10 +11,10 @@ import ShowRoom from "./pages/ShowRoom/ShowRoom";
 function App() {
     const [reciveData, setReciveData] = useState(false);
     const dispatch = useDispatch()
-    
+
     useEffect(() => {
         Products.getAll().then(res => {
-            dispatch(storeData(res.data))
+            dispatch(storeData(res.data.shop.products))
         }).finally(() => {
             setReciveData(true)
         })

@@ -1,10 +1,13 @@
 import React from "react";
 import "./productcard.scss";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../../store/sliceCart";
 
 function ProductCard({product}) {
+    const dispatch = useDispatch()
 
     const addToCartHandler = () => {
-        console.log(product)
+        dispatch(addToCart(product))
     }
 
     return (
@@ -14,7 +17,7 @@ function ProductCard({product}) {
             </div>
             <div className="product-card-body">
                 <h3>{product.title}</h3>
-                <p className="price">{product.price}</p>
+                <p className="price">${product.price}</p>
                 <p>{product.source}</p>
             </div>
             <div className="product-card-footer">

@@ -1,0 +1,23 @@
+@import "../../assets/styles/main";
+
+.cart {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: 100%;
+  background-color: rgba($white, 0.9);
+  padding: 10px;
+  box-shadow: 0 0 5px $black;
+
+  &-product {
+    line-height: 1.5;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+
+    img {
+      max-height: 100px;
+      width: auto;
+    }
+  }
+}
