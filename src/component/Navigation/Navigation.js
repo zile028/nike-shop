@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineLogin, AiOutlineShoppingCart } from "react-icons/ai";
@@ -10,6 +10,12 @@ function Navigation() {
   const { category } = useSelector((state) => state.productStore);
   const { cart } = useSelector((state) => state.cartStore);
   const [showCart, setShowCart] = useState(false);
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      setShowCart(false);
+    }
+  }, [cart]);
 
   const renderNavLink = () => {
     return category.map((el, index) => {
@@ -42,7 +48,7 @@ function Navigation() {
           </button>
           <button className="cart-icon" onClick={showCartHandler}>
             <AiOutlineShoppingCart />
-            <span>{cart.length}</span>
+            {cart.length > 0 && <span>{cart.length}</span>}
           </button>
           {showCart && <Cart />}
         </div>

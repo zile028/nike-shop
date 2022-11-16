@@ -7,12 +7,29 @@ const sliceCart = createSlice({
     total: 0,
   },
   reducers: {
+    removeFromCart: (state, action) => {
+      state.cart.splice(action.payload, 1);
+    },
+
+    changeCount: (state, { payload }) => {
+      let { count } = state.cart[payload.index];
+
+      if (count === 1 && payload.increment === -1) {
+        state.cart.splice(payload.index, 1);
+      } else {
+        state.cart[payload.index].count += payload.increment;
+      }
+    },
+
     addToCart: (state, action) => {
       let foundIndex = null;
       let copyCart = [...state.cart];
+
       state.cart.find((el, index) => {
-        foundIndex = index;
-        return el.id === action.payload.id;
+        if (el.id === action.payload.id) {
+          foundIndex = index;
+          return;
+        }
       });
 
       if (foundIndex === null) {
@@ -27,5 +44,5 @@ const sliceCart = createSlice({
   },
 });
 
-export const { addToCart } = sliceCart.actions;
+export const { addToCart, changeCount, removeFromCart } = sliceCart.actions;
 export default sliceCart.reducer;

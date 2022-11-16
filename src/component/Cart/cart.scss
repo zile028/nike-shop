@@ -1,20 +1,54 @@
 @import "../../assets/styles/main.scss";
-.cart-wrapper {
+.cart {
   position: absolute;
   top: 100%;
   right: 0;
   z-index: 2;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   width: auto;
   padding: 10px;
   background-color: $white;
   box-shadow: 0 0 3px $black;
   border-radius: 5px;
   margin-top: 10px;
-  ul {
-    li {
+  &-product {
+    font-size: 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    gap: 10px;
+    img {
+      max-height: 100px;
+      width: auto;
+    }
+    & > div {
+      &:last-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+      }
+    }
+    h4 {
       font-size: 1.6rem;
-      line-height: 1.7;
+    }
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  .quantity {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    button {
+      line-height: 1;
+      padding: 3px;
+      color: $primaryColor;
+    }
+    span {
+      padding: 3px;
     }
   }
 }
