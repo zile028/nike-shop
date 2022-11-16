@@ -1,10 +1,45 @@
 @import "../../assets/styles/main.scss";
+
 .showroom {
   display: flex;
   gap: 30px;
+  align-items: flex-start;
+
   aside {
     width: 300px;
+    box-shadow: $boxShadow;
+    padding: 1.5rem;
+
+    div {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas: "minPrice currentPrice maxPrice" "input input input";
+      column-gap: 10px;
+    }
+
+    .price {
+
+      &-min {
+        grid-area: minPrice
+      }
+
+      &-current {
+        grid-area: currentPrice;
+        text-align: center;
+      }
+
+      &-max {
+        grid-area: maxPrice;
+        text-align: right;
+      }
+
+    }
+
+    input {
+      grid-area: input;
+    }
   }
+
   article {
     position: relative;
     flex: 1;
