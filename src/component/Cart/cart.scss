@@ -3,7 +3,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  z-index: 2;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -13,14 +13,24 @@
   box-shadow: 0 0 3px $black;
   border-radius: 5px;
   margin-top: 10px;
+  transform-origin: top right;
+  animation-name: slideIn;
+  animation-timing-function: ease;
+  animation-duration: 0.4s;
+
   &-product {
     font-size: 1.6rem;
     display: grid;
-    grid-template-columns: 1fr 2fr auto;
+    grid-template-columns: auto 1fr auto;
     gap: 10px;
+    overflow-y: auto;
+    max-height: 50vh;
+
+    width: 600px;
     img {
-      max-height: 100px;
-      width: auto;
+      height: 100px;
+      width: 100px;
+      object-fit: cover;
     }
     & > div {
       &:last-child {
@@ -36,6 +46,9 @@
     p {
       font-size: 2rem;
     }
+    & > button {
+      margin-right: 5px;
+    }
   }
 
   .quantity {
@@ -50,5 +63,23 @@
     span {
       padding: 3px;
     }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(50vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50vw);
   }
 }
