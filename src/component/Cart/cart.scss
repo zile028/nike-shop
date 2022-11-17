@@ -8,16 +8,48 @@
   background-color: rgba($white, 0.9);
   padding: 10px;
   box-shadow: 0 0 5px $black;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+  max-height: 300px;
+
+  transform-origin: right center;
+
+  animation-duration: .4s;
+  animation-timing-function: ease;
+
 
   &-product {
+    overflow-y: auto;
     line-height: 1.5;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr auto;
     gap: 10px;
 
     img {
       max-height: 100px;
       width: auto;
     }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+
   }
 }

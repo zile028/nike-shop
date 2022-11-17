@@ -1,10 +1,13 @@
 @import "../../assets/styles/main.scss";
+
 .showroom {
   display: flex;
   gap: 30px;
+
   aside {
     width: 300px;
   }
+
   article {
     position: relative;
     flex: 1;
