@@ -1,28 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCount, removeFromCart } from "../../store/sliceCart";
 import "./cart.scss";
 
-function Cart({ cart, showCart, setIsMounted }) {
+function Cart({ cart, animate }) {
   const { total } = useSelector((state) => state.cartStore);
   const dispatch = useDispatch();
-  const [animate, setAnimate] = useState({});
-  useEffect(() => {
-    let timer = null;
-    if (showCart) {
-      setAnimate({ animationName: "slideIn" });
-    } else {
-      setAnimate({ animationName: "slideOut" });
-      timer = setTimeout(() => {
-        setIsMounted(false);
-      }, 400);
-    }
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [showCart]);
 
   const quantityHandler = (increment, index) => {
     dispatch(changeCount({ increment, index }));

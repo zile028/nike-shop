@@ -5,17 +5,25 @@ import { AiOutlineLogin, AiOutlineShoppingCart } from "react-icons/ai";
 import "./navigation.scss";
 import { useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
+import { useDelay } from "../../hooks/useDelay";
 
 function Navigation() {
   const { category } = useSelector((state) => state.productStore);
   const { cart } = useSelector((state) => state.cartStore);
-  const [showCart, setShowCart] = useState(false);
 
   const [isMounted, setIsMounted] = useState(false);
+  const [shouldRender, animate] = useDelay({
+    animationName: {
+      start: "slideIn",
+      end: "slideOut",
+    },
+    delayTime: 400,
+    isMounted: isMounted,
+  });
 
   useEffect(() => {
     if (cart.length === 0) {
-      setShowCart(false);
+      setIsMounted(false);
     }
   }, [cart]);
 
@@ -31,12 +39,7 @@ function Navigation() {
 
   const showCartHandler = () => {
     if (cart.length > 0) {
-      if (showCart) {
-        setShowCart(!showCart);
-      } else {
-        setIsMounted(true);
-        setShowCart(!showCart);
-      }
+      setIsMounted(!isMounted);
     }
   };
 
@@ -59,9 +62,7 @@ function Navigation() {
             <AiOutlineShoppingCart />
             {cart.length > 0 && <span>{cart.length}</span>}
           </button>
-          {isMounted && (
-            <Cart cart={cart} showCart={showCart} setIsMounted={setIsMounted} />
-          )}
+          {shouldRender && <Cart cart={cart} animate={animate} />}
         </div>
       </div>
     </nav>
