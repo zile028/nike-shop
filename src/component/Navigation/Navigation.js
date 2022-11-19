@@ -3,24 +3,29 @@ import logo from "../../logo.svg";
 import {Link, NavLink} from "react-router-dom";
 import {AiOutlineLogin, AiOutlineShoppingCart} from "react-icons/ai";
 import "./navigation.scss"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Cart from "../Cart/Cart";
+import {useDelayUnmount} from "../../hooks/useDelayUnmount";
+import Modal from "../Modal/Modal";
+import {closeModal, showModal, toggleModal} from "../../store/sliceModal";
 
 function Navigation() {
-    const [showCart, setShowCart] = useState(false);
-    const [unmountCart, setUnmountCart] = useState(false);
+    const [isMount, setIsMount] = useState(false);
+    const {shouldRender, animateStyle} = useDelayUnmount(
+        {
+            isMount: isMount,
+            delay: 400,
+            mountStyle: {mount: "slideIn", unmount: "slideOut"}
+        })
+    const dispatch = useDispatch()
     const {category} = useSelector((state) => state.productStore)
     const {cart} = useSelector((state) => state.cartStore)
+    const {modal} = useSelector((state) => state.modalStore)
 
     useEffect(() => {
-        cart.length === 0 && setShowCart(false)
+        cart.length === 0 && setIsMount(false)
     }, [cart]);
 
-    useEffect(() => {
-        if (unmountCart) {
-            setShowCart(false)
-        }
-    }, [unmountCart]);
 
     const renderNavLink = () => {
         return category.map((el, index) => {
@@ -29,12 +34,22 @@ function Navigation() {
     }
 
     const renderCart = () => {
-        setUnmountCart(!unmountCart)
-        // cart.length > 0 && setShowCart(!showCart)
+        if (cart.length > 0) {
+            setIsMount(!isMount)
+        }
     }
 
     return (
         <nav className="navbar">
+            {modal.register && <Modal>
+                <form className="form-register">
+                    <input type="text" placeholder="Full Name" name="fullName"/>
+                    <input type="email" placeholder="Email" name="email"/>
+                    <input type="password" placeholder="Password" name="password"/>
+                    <button>Register</button>
+                    <button type="button" onClick={() => dispatch(toggleModal({register: false}))}>Cancel</button>
+                </form>
+            </Modal>}
             <div className="container">
                 <div className="navbar-logo">
                     <Link to={"/"}><img src={logo} alt="nike"/></Link>
@@ -45,12 +60,13 @@ function Navigation() {
                     </ul>
                 </div>
                 <div className="navbar-action">
-                    <button><AiOutlineLogin/></button>
+                    <button onClick={() => {
+                        dispatch(toggleModal({register: true}))
+                    }}><AiOutlineLogin/></button>
                     <button className="cartIcon" onClick={renderCart}><AiOutlineShoppingCart/>
                         {cart.length ? <span>{cart.length}</span> : null}
                     </button>
-                    {unmountCart && cart.length > 0 ?
-                        <Cart unmountCart={unmountCart} setShowCart={setShowCart}/> : null}
+                    {shouldRender ? <Cart animateStyle={animateStyle}/> : null}
 
                 </div>
             </div>

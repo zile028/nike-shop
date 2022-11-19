@@ -5,32 +5,12 @@ import {BsTrash} from "react-icons/bs";
 import {useDispatch, useSelector} from "react-redux";
 import {changeCount, removeFromCart} from "../../store/sliceCart";
 
-// const slide = {
-//     in: {animationName: "slideIn"},
-//     out: {animationName: "slideOut"}
-// }
-
-
-function Cart({unmountCart, setShowCart}) {
+function Cart({animateStyle}) {
     const dispatch = useDispatch()
     const {total, cart} = useSelector((state) => state.cartStore)
-    const [slide, setSlide] = useState({animationName: "slideIn"})
-
-    useEffect(() => {
-        if (!unmountCart) {
-            setSlide({animationName: "slideOut"})
-            const timer = setTimeout(() => {
-                setShowCart(false)
-            }, 401)
-        } else {
-            setSlide({animationName: "slideIn"})
-            setShowCart(true)
-
-        }
-    }, [unmountCart])
-
+    
     return (
-        <div className="cart" style={slide}>
+        <div className="cart" style={animateStyle}>
             <div className="cart-product">
                 {cart.map((el, index) => {
                     return <Fragment key={index}>
