@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export const useDelay = function ({
   isMounted,
-  animationName = { start: null, end: null },
+  mountAnimation = { mount: null, unmount: null },
   delayTime,
 }) {
   const [shouldRender, setShouldRender] = useState(false);
@@ -12,12 +12,12 @@ export const useDelay = function ({
     if (isMounted && !shouldRender) {
       setShouldRender(true);
       setAnimate({
-        animationName: animationName.start,
+        animationName: mountAnimation.mount,
         animationDuration: delayTime + "ms",
       });
     } else if (!isMounted && shouldRender) {
       setAnimate({
-        animationName: animationName.end,
+        animationName: mountAnimation.unmount,
         animationDuration: delayTime + "ms",
       });
       timer = setTimeout(() => {
@@ -28,8 +28,8 @@ export const useDelay = function ({
       clearTimeout(timer);
     };
   }, [
-    animationName.end,
-    animationName.start,
+    mountAnimation.mount,
+    mountAnimation.unmount,
     delayTime,
     isMounted,
     shouldRender,

@@ -13,9 +13,9 @@ function Navigation() {
 
   const [isMounted, setIsMounted] = useState(false);
   const [shouldRender, animate] = useDelay({
-    animationName: {
-      start: "slideIn",
-      end: "slideOut",
+    mountAnimation: {
+      mount: "slideIn",
+      unmount: "slideOut",
     },
     delayTime: 400,
     isMounted: isMounted,
