@@ -7,12 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
 import { useDelay } from "../../hooks/useDelay";
 import Register from "../Register/Register";
-import { showModal } from "../../store/sliceModal";
+import { toggleModal } from "../../store/sliceModal";
 
 function Navigation() {
   const { category } = useSelector((state) => state.productStore);
   const { cart } = useSelector((state) => state.cartStore);
-
+  const { modal } = useSelector((state) => state.modalStore);
+  const dispatch = useDispatch();
   const [isMounted, setIsMounted] = useState(false);
   const [shouldRender, animate] = useDelay({
     mountAnimation: {
@@ -27,6 +28,7 @@ function Navigation() {
     if (cart.length === 0) {
       setIsMounted(false);
     }
+    localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   const renderNavLink = () => {
@@ -58,14 +60,14 @@ function Navigation() {
             <ul>{renderNavLink()}</ul>
           </div>
           <div className="navbar-action">
-            <button onClick={() => dispatch(showModal({ register: true }))}>
+            <button onClick={() => dispatch(toggleModal({ register: true }))}>
               <AiOutlineLogin />
             </button>
             <button className="cart-icon" onClick={showCartHandler}>
               <AiOutlineShoppingCart />
               {cart.length > 0 && <span>{cart.length}</span>}
             </button>
-            {shouldRender && <Cart cart={cart} animate={animate} />}
+            {shouldRender && <Cart animate={animate} />}
           </div>
         </div>
       </nav>

@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeCount, removeFromCart } from "../../store/sliceCart";
 import "./cart.scss";
 
-function Cart({ cart, animate }) {
-  const { total } = useSelector((state) => state.cartStore);
+function Cart({ animate }) {
+  const { cart, total } = useSelector((state) => state.cartStore);
   const dispatch = useDispatch();
 
   const quantityHandler = (increment, index) => {

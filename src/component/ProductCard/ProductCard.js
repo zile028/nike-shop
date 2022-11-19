@@ -11,7 +11,7 @@ function ProductCard({ product }) {
   };
 
   return (
-    <div className="product-card">
+    <div className="product-card" draggable={true}>
       <div className="product-card-image">
         <img src={product.img} alt="product" />
       </div>
