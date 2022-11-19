@@ -3,9 +3,11 @@ import logo from "../../logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineLogin, AiOutlineShoppingCart } from "react-icons/ai";
 import "./navigation.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
 import { useDelay } from "../../hooks/useDelay";
+import Register from "../Register/Register";
+import { showModal } from "../../store/sliceModal";
 
 function Navigation() {
   const { category } = useSelector((state) => state.productStore);
@@ -44,28 +46,31 @@ function Navigation() {
   };
 
   return (
-    <nav className="navbar">
-      <div className="container">
-        <div className="navbar-logo">
-          <Link to={"/"}>
-            <img src={logo} alt="nike" />
-          </Link>
+    <>
+      <nav className="navbar">
+        <div className="container">
+          <div className="navbar-logo">
+            <Link to={"/"}>
+              <img src={logo} alt="nike" />
+            </Link>
+          </div>
+          <div className="navbar-menu">
+            <ul>{renderNavLink()}</ul>
+          </div>
+          <div className="navbar-action">
+            <button onClick={() => dispatch(showModal({ register: true }))}>
+              <AiOutlineLogin />
+            </button>
+            <button className="cart-icon" onClick={showCartHandler}>
+              <AiOutlineShoppingCart />
+              {cart.length > 0 && <span>{cart.length}</span>}
+            </button>
+            {shouldRender && <Cart cart={cart} animate={animate} />}
+          </div>
         </div>
-        <div className="navbar-menu">
-          <ul>{renderNavLink()}</ul>
-        </div>
-        <div className="navbar-action">
-          <button>
-            <AiOutlineLogin />
-          </button>
-          <button className="cart-icon" onClick={showCartHandler}>
-            <AiOutlineShoppingCart />
-            {cart.length > 0 && <span>{cart.length}</span>}
-          </button>
-          {shouldRender && <Cart cart={cart} animate={animate} />}
-        </div>
-      </div>
-    </nav>
+      </nav>
+      {modal.register && <Register />}
+    </>
   );
 }
 

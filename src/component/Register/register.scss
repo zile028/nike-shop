@@ -1,0 +1,35 @@
+@import "../../assets/styles/main";
+
+.register {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 3rem 2rem;
+  background-color: $white;
+  border-radius: 5px;
+  box-shadow: 0 0 3px black;
+
+  %global {
+    padding: .5rem 2rem;
+    width: 100%;
+  }
+
+  h3 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+  }
+
+  input {
+    @extend %global
+  }
+
+  button {
+    @extend %global;
+    width: 48%;
+  }
+}
