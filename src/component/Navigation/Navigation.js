@@ -8,6 +8,7 @@ import Cart from "../Cart/Cart";
 import { useDelay } from "../../hooks/useDelay";
 import Register from "../Register/Register";
 import { toggleModal } from "../../store/sliceModal";
+import Login from "../Login/Login";
 
 function Navigation() {
   const { category } = useSelector((state) => state.productStore);
@@ -15,6 +16,7 @@ function Navigation() {
   const { modal } = useSelector((state) => state.modalStore);
   const dispatch = useDispatch();
   const [isMounted, setIsMounted] = useState(false);
+  const [mountAuth, setMountAuth] = useState(false);
   const [shouldRender, animate] = useDelay({
     mountAnimation: {
       mount: "slideIn",
@@ -22,6 +24,15 @@ function Navigation() {
     },
     delayTime: 400,
     isMounted: isMounted,
+  });
+
+  const [renderAuth, authAnimate] = useDelay({
+    mountAnimation: {
+      mount: "slideIn",
+      unmount: "slideOut",
+    },
+    delayTime: 400,
+    isMounted: mountAuth,
   });
 
   useEffect(() => {
@@ -60,9 +71,29 @@ function Navigation() {
             <ul>{renderNavLink()}</ul>
           </div>
           <div className="navbar-action">
-            <button onClick={() => dispatch(toggleModal({ register: true }))}>
+            <button onClick={() => setMountAuth(!mountAuth)}>
               <AiOutlineLogin />
             </button>
+            {renderAuth && (
+              <div className="auth-menu" style={authAnimate}>
+                <button
+                  onClick={() => {
+                    setMountAuth(false);
+                    dispatch(toggleModal({ login: true }));
+                  }}
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => {
+                    setMountAuth(false);
+                    dispatch(toggleModal({ register: true }));
+                  }}
+                >
+                  Register
+                </button>
+              </div>
+            )}
             <button className="cart-icon" onClick={showCartHandler}>
               <AiOutlineShoppingCart />
               {cart.length > 0 && <span>{cart.length}</span>}
@@ -72,6 +103,7 @@ function Navigation() {
         </div>
       </nav>
       {modal.register && <Register />}
+      {modal.login && <Login />}
     </>
   );
 }

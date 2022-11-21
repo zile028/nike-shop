@@ -67,4 +67,20 @@
       }
     }
   }
+  .auth-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 2;
+    margin-top: 10px;
+    background-color: $white;
+    box-shadow: $boxShadow;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation-timing-function: ease;
+    max-width: 200px;
+    width: 100%;
+  }
 }

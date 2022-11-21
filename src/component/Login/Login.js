@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import "./register.scss";
-import Modal from "../Modal/Modal";
-import { toggleModal } from "../../store/sliceModal";
 import { useDispatch } from "react-redux";
+import { toggleModal } from "../../store/sliceModal";
+import Modal from "../Modal/Modal";
 
-function Register() {
+function Login() {
   const dispatch = useDispatch();
   const [inputData, setInputData] = useState({});
 
@@ -17,26 +16,14 @@ function Register() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    // TODO validate input data
+    // TODO check user is register
 
-    localStorage.setItem("users", JSON.stringify(inputData));
+    // localStorage.setItem("users", JSON.stringify(inputData));
   };
   return (
     <Modal>
       <form className="register" onSubmit={submitHandler}>
-        <h3>Register</h3>
-        <input
-          type="text"
-          placeholder="First name"
-          name="firstName"
-          onInput={inputHandler}
-        />
-        <input
-          type="text"
-          placeholder="Last name"
-          name="lastName"
-          onInput={inputHandler}
-        />
+        <h3>Login</h3>
         <input
           type="email"
           placeholder="Email"
@@ -49,10 +36,10 @@ function Register() {
           name="password"
           onInput={inputHandler}
         />
-        <button>Register</button>
+        <button>Login</button>
         <button
           type="button"
-          onClick={() => dispatch(toggleModal({ register: false }))}
+          onClick={() => dispatch(toggleModal({ login: false }))}
         >
           Cancel
         </button>
@@ -61,4 +48,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;
