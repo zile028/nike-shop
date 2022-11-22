@@ -3,23 +3,24 @@ import "./register.scss";
 import Modal from "../Modal/Modal";
 import { toggleModal } from "../../store/sliceModal";
 import { useDispatch } from "react-redux";
+import Auth from "../../services/Auth";
 
 function Register() {
   const dispatch = useDispatch();
   const [inputData, setInputData] = useState({});
 
   const inputHandler = (e) => {
-    let data = e.target.value;
-    let name = e.target.name;
     let copyInputData = { ...inputData };
-    copyInputData[name] = data;
+    copyInputData[e.target.name] = e.target.value;
     setInputData(copyInputData);
   };
   const submitHandler = (e) => {
     e.preventDefault();
     // TODO validate input data
-
-    localStorage.setItem("users", JSON.stringify(inputData));
+    if (Auth.register(inputData)) {
+      dispatch(toggleModal({ register: false }));
+      dispatch(toggleModal({ login: true }));
+    }
   };
   return (
     <Modal>

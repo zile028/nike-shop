@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import Auth from "../../services/Auth";
 import { toggleModal } from "../../store/sliceModal";
 import Modal from "../Modal/Modal";
 
@@ -8,17 +9,20 @@ function Login() {
   const [inputData, setInputData] = useState({});
 
   const inputHandler = (e) => {
-    let data = e.target.value;
-    let name = e.target.name;
     let copyInputData = { ...inputData };
-    copyInputData[name] = data;
+    copyInputData[e.target.name] = e.target.value;
     setInputData(copyInputData);
   };
   const submitHandler = (e) => {
     e.preventDefault();
     // TODO check user is register
+    if (Auth.login(inputData)) {
+      //TODO store login user to redux store
 
-    // localStorage.setItem("users", JSON.stringify(inputData));
+      dispatch(toggleModal({ login: false }));
+    } else {
+      console.log("ne postoji");
+    }
   };
   return (
     <Modal>

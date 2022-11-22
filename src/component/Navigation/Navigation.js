@@ -53,6 +53,7 @@ function Navigation() {
   };
 
   const showCartHandler = () => {
+    setMountAuth(false);
     if (cart.length > 0) {
       setIsMounted(!isMounted);
     }
@@ -71,7 +72,12 @@ function Navigation() {
             <ul>{renderNavLink()}</ul>
           </div>
           <div className="navbar-action">
-            <button onClick={() => setMountAuth(!mountAuth)}>
+            <button
+              onClick={() => {
+                setIsMounted(false);
+                setMountAuth(!mountAuth);
+              }}
+            >
               <AiOutlineLogin />
             </button>
             {renderAuth && (
