@@ -1,0 +1,23 @@
+@import "../../assets/styles/main";
+
+.form-register {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+
+  %global {
+    padding: 10px 5px;
+    border-radius: 5px;
+  }
+
+  input {
+    @extend %global;
+    width: 100%;
+  }
+
+  button {
+    @extend %global;
+    width: 49%;
+  }
+}

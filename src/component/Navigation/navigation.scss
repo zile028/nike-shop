@@ -1,28 +1,5 @@
 @import "../../assets/styles/main";
 
-.form-register {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 10px;
-
-  %global {
-    padding: 10px 5px;
-    border-radius: 5px;
-  }
-
-  input {
-    @extend %global;
-    width: 100%;
-  }
-
-  button {
-    @extend %global;
-    width: 49%;
-  }
-}
-
-
 .navbar {
   padding: 20px 0;
 
@@ -90,5 +67,24 @@
         line-height: 1.2em;
       }
     }
+  }
+
+  .auth-menu {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 100%;
+    background-color: $white;
+    padding: 10px;
+    box-shadow: $boxShadow;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    max-width: 150px;
+    width: 100%;
+    border-radius: 5px;
+    animation-timing-function: ease;
+    transform-origin: right center;
   }
 }

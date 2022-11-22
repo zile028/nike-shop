@@ -24,5 +24,5 @@ export const useDelayUnmount = ({isMount, delay, mountStyle = {mount: null, unmo
             clearTimeout(timer)
         }
     }, [isMount, delay, mountStyle.mount, mountStyle.unmount])
-    return {shouldRender, animateStyle}
+    return [shouldRender, animateStyle]
 }

@@ -13,11 +13,8 @@
   gap: 5px;
   margin-top: 10px;
   max-height: 300px;
-
   transform-origin: right center;
-  animation-duration: 400ms;
   animation-timing-function: ease;
-
 
   &-product {
     overflow-y: auto;
@@ -35,20 +32,18 @@
 
 @keyframes slideIn {
   from {
-    transform: scaleX(0);
+    transform: translateX(50vw);
   }
   to {
-    transform: scaleX(1);
-
+    transform: translateX(0);
   }
 }
 
 @keyframes slideOut {
   from {
-    transform: scaleX(1);
+    transform: translateX(0);
   }
   to {
-    transform: scaleX(0);
-
+    transform: translateX(50vw);
   }
 }

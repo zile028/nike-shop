@@ -10,8 +10,6 @@ const sliceModal = createSlice({
     reducers: {
         toggleModal: (state, action) => {
             state.modal = {...state.modal, ...action.payload}
-            let copyModal = {...state.modal}
-            console.log(copyModal)
         }
     }
 })
