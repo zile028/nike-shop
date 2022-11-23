@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Auth from "../../services/Auth";
 import { toggleModal } from "../../store/sliceModal";
+import { login } from "../../store/sliceUser";
 import Modal from "../Modal/Modal";
 
 function Login() {
@@ -15,10 +16,9 @@ function Login() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    // TODO check user is register
-    if (Auth.login(inputData)) {
-      //TODO store login user to redux store
-
+    let logedUser = Auth.login(inputData);
+    if (logedUser) {
+      dispatch(login(logedUser));
       dispatch(toggleModal({ login: false }));
     } else {
       console.log("ne postoji");

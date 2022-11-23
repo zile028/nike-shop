@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/sliceCart";
 import "./productcard.scss";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -14,6 +15,10 @@ function ProductCard({ product }) {
     <div className="product-card" draggable={true}>
       <div className="product-card-image">
         <img src={product.img} alt="product" />
+        <span className="like-btn">
+          <BsHeart />
+          <BsHeartFill />
+        </span>
       </div>
       <div className="product-card-body">
         <h3>{product.title}</h3>

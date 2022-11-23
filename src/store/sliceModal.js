@@ -8,7 +8,6 @@ const sliceModal = createSlice({
   reducers: {
     toggleModal: (state, action) => {
       state.modal = { ...state.modal, ...action.payload };
-      console.log(action.payload);
     },
   },
 });

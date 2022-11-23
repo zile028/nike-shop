@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { storeData } from "./store/sliceProduct";
 import ShowRoom from "./pages/ShowRoom/ShowRoom";
 import { restoreCart } from "./store/sliceCart";
+import { login } from "./store/sliceUser";
 
 function App() {
   const [reciveData, setReciveData] = useState(false);
@@ -17,6 +18,11 @@ function App() {
     if (localStorage.hasOwnProperty("cart")) {
       dispatch(restoreCart(JSON.parse(localStorage.getItem("cart"))));
     }
+
+    if (localStorage.hasOwnProperty("logedUser")) {
+      dispatch(login(JSON.parse(localStorage.getItem("logedUser"))));
+    }
+
     Products.getAll()
       .then((res) => {
         dispatch(storeData(res.data.shop.products));

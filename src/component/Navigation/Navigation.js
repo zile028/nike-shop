@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import { AiOutlineLogin, AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiOutlineLogin,
+  AiOutlineLogout,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import "./navigation.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
@@ -9,11 +13,13 @@ import { useDelay } from "../../hooks/useDelay";
 import Register from "../Register/Register";
 import { toggleModal } from "../../store/sliceModal";
 import Login from "../Login/Login";
+import { logout } from "../../store/sliceUser";
 
 function Navigation() {
   const { category } = useSelector((state) => state.productStore);
   const { cart } = useSelector((state) => state.cartStore);
   const { modal } = useSelector((state) => state.modalStore);
+  const { user } = useSelector((state) => state.userStore);
   const dispatch = useDispatch();
   const [isMounted, setIsMounted] = useState(false);
   const [mountAuth, setMountAuth] = useState(false);
@@ -72,14 +78,21 @@ function Navigation() {
             <ul>{renderNavLink()}</ul>
           </div>
           <div className="navbar-action">
-            <button
-              onClick={() => {
-                setIsMounted(false);
-                setMountAuth(!mountAuth);
-              }}
-            >
-              <AiOutlineLogin />
-            </button>
+            {user.email ? (
+              <button onClick={() => dispatch(logout())}>
+                {user.firstName} <AiOutlineLogout />
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setIsMounted(false);
+                  setMountAuth(!mountAuth);
+                }}
+              >
+                <AiOutlineLogin />
+              </button>
+            )}
+
             {renderAuth && (
               <div className="auth-menu" style={authAnimate}>
                 <button
