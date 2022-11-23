@@ -6,9 +6,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
+
   * {
     user-select: none;
   }
+
   &-image {
     margin-bottom: 20px;
     position: relative;
@@ -31,6 +33,7 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
+    cursor: pointer;
   }
 
   .price {
