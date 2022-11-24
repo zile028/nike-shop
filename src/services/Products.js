@@ -5,6 +5,15 @@ const url =
 
 class Products {
   static getAll = () => axios.get(url);
+  static getFavorits = (favorit) => {
+    return new Promise((resolve, reject) => {
+      axios.get(url).then((data) => {
+        resolve(
+          data.data.shop.products.filter((el) => favorit.includes(el.id))
+        );
+      });
+    });
+  };
 }
 
 export default Products;
